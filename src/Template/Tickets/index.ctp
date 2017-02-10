@@ -32,8 +32,8 @@
                 <td><?= h($ticket->created) ?></td>
                 <td><?= h($ticket->modified) ?></td>
                 <td><?= h($ticket->name) ?></td>
-                <td><?= $this->Number->format($ticket->status) ?></td>
-                <td><?= $this->Number->format($ticket->priority) ?></td>
+                <td><?= $ticket->status_options[$ticket->status] ?></td>
+                <td><?= $ticket->priority_options[$ticket->priority] ?></td>
                 <td><?= h($ticket->deadline) ?></td>
                 <td><?= $this->Number->format($ticket->cost) ?></td>
                 <td class="actions">

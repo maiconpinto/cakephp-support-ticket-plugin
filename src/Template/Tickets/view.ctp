@@ -25,11 +25,11 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Status') ?></th>
-            <td><?= $this->Number->format($ticket->status) ?></td>
+            <td><?= $ticket->status_options[$ticket->status] ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Priority') ?></th>
-            <td><?= $this->Number->format($ticket->priority) ?></td>
+            <td><?= $ticket->priority_options[$ticket->priority] ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Cost') ?></th>

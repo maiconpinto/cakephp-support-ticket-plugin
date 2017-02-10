@@ -49,6 +49,8 @@ class TicketsController extends AppController
     public function add()
     {
         $ticket = $this->Tickets->newEntity();
+        debug($ticket);
+        
         if ($this->request->is('post')) {
             $ticket = $this->Tickets->patchEntity($ticket, $this->request->data);
             if ($this->Tickets->save($ticket)) {

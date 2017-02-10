@@ -32,4 +32,14 @@ class Ticket extends Entity
         '*' => true,
         'id' => false
     ];
+    
+    protected function _getStatusOptions() 
+    {
+        return [1 => __('New'), 2 => __('Closed')];
+    }
+    
+    protected function _getPriorityOptions()
+    {
+        return [1 => __('Low'), 2 => __('Medium'), 3 => __('Hight')];
+    }
 }

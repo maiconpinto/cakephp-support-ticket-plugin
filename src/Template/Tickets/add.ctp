@@ -16,8 +16,8 @@
         <?php
             echo $this->Form->input('name');
             echo $this->Form->input('description');
-            echo $this->Form->input('status');
-            echo $this->Form->input('priority');
+            echo $this->Form->input('status', ['options' => $ticket->status_options]);
+            echo $this->Form->input('priority', ['options' => $ticket->priority_options]);
             echo $this->Form->input('deadline', ['empty' => true]);
             echo $this->Form->input('cost');
         ?>
