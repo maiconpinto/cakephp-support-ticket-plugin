@@ -78,4 +78,12 @@ class TicketsTable extends Table
 
         return $validator;
     }
+    
+    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    {
+        if (!is_array($data['deadline'])) {
+            list($d, $m, $y) = explode('/', $data['deadline']);
+            $data['deadline'] = ['year' => $y, 'month' => $m, 'day' => $d];
+        }
+    }
 }
