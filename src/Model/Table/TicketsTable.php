@@ -5,6 +5,9 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Core\Configure;
+use Cake\Event\Event;
+use ArrayObject;
 
 /**
  * Tickets Model
@@ -82,7 +85,14 @@ class TicketsTable extends Table
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
     {
         if (!is_array($data['deadline'])) {
-            list($d, $m, $y) = explode('/', $data['deadline']);
+            $locale = Configure::read('App.defaultLocale');
+            
+            if ($locale == 'pt_BR') {
+                list($d, $m, $y) = explode('/', $data['deadline']);
+            } else {
+                list($m, $d, $y) = explode('/', $data['deadline']);
+            }
+            
             $data['deadline'] = ['year' => $y, 'month' => $m, 'day' => $d];
         }
     }
