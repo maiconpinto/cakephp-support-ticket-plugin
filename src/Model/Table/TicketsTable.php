@@ -81,18 +81,18 @@ class TicketsTable extends Table
 
         return $validator;
     }
-    
+
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
     {
-        if (!is_array($data['deadline'])) {
+        if (!is_array($data['deadline']) && !empty($data['deadline'])) {
             $locale = Configure::read('App.defaultLocale');
-            
+
             if ($locale == 'pt_BR') {
                 list($d, $m, $y) = explode('/', $data['deadline']);
             } else {
                 list($m, $d, $y) = explode('/', $data['deadline']);
             }
-            
+
             $data['deadline'] = ['year' => $y, 'month' => $m, 'day' => $d];
         }
     }
